@@ -12,7 +12,8 @@ const ELEVENLABS_API_URL = 'https://api.elevenlabs.io/v1/text-to-speech';
 
 // Voice IDs from ElevenLabs
 export const VOICES = {
-  river: 'SAz9YHcvj6GT2YYXdXww',     // Relaxed, Neutral, Informative - DEFAULT
+  bjorn: 'S9GPGBaMND8XWwwzxQXp',     // Bjorn's voice - DEFAULT
+  river: 'SAz9YHcvj6GT2YYXdXww',     // Relaxed, Neutral, Informative
   eric: 'cjVigY5qzO86Huf0OWal',       // Smooth, Trustworthy
   alice: 'Xb7hH8MSUJpSbSDYk0k2',      // Clear, Engaging Educator
   matilda: 'XrExE9yKIg1WjnnlVkGX',    // Knowledgeable, Professional
@@ -51,7 +52,7 @@ export class ElevenLabsService {
 
   constructor(config: TTSConfig) {
     this.apiKey = config.apiKey;
-    this.voiceId = config.voiceId || VOICES.river;
+    this.voiceId = config.voiceId || VOICES.bjorn;
     this.modelId = config.modelId || 'eleven_multilingual_v2';
     this.stability = config.stability ?? 0.5;
     this.similarityBoost = config.similarityBoost ?? 0.75;
@@ -211,7 +212,7 @@ export class ElevenLabsService {
 /**
  * Create an ElevenLabs service instance
  */
-export function createElevenLabsService(apiKey: string, voiceName: VoiceName = 'river') {
+export function createElevenLabsService(apiKey: string, voiceName: VoiceName = 'bjorn') {
   return new ElevenLabsService({
     apiKey,
     voiceId: VOICES[voiceName],
